@@ -1,0 +1,55 @@
+<div class="d-flex mt-2 flex-wrap">
+  <div class="flex-grow-1">
+    <et-balance-display></et-balance-display>
+  </div>
+  <div class="flex-grow-4">
+    <div class="d-flex justify-content-between pd-2 flex-wrap">
+      <et-transactions-filters
+        [categories]="categories"
+        (filterChange)="onFilterChange($event)"
+      ></et-transactions-filters>
+      <button mat-stroked-button (click)="openAddTransactionModal()">Add data</button>
+    </div>
+    <mat-card>
+      <table
+        mat-table
+        [dataSource]="transactionsDataSource"
+        class="mat-elevation-z8"
+        matSort
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let txn">{{ txn.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let txn">{{ txn.amount | currency }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let txn">{{ txn.type }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Category</th>
+          <td mat-cell *matCellDef="let txn">{{ txn.category }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let txn">{{ txn.date | date }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      [pageSize]="10"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

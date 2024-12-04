@@ -1,0 +1,35 @@
+<form [formGroup]="filterForm" class="filters">
+  <mat-form-field appearance="outline" class="mr-2">
+    <mat-label>Search</mat-label>
+    <input formControlName="search" matInput placeholder="Search by name..." />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="mr-2">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="income">Income</mat-option>
+      <mat-option value="expense">Expense</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="categorySearchControl"
+      placeholder="Search category"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onCategorySelected($event.option.value)"
+    >
+      <mat-option
+        *ngFor="let category of filteredCategories; trackBy: trackByCategory"
+        [value]="category"
+      >
+        {{ category }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-button (click)="resetFilters()">Reset Filter</button>
+</form>

@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.d-flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items:center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow-4 {
+  flex-grow: 4;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.pd-2 {
+  padding: 8px;
+}
+
+.mt-2 {
+  margin-top: 16px;
+}
+
+.mr-2 {
+  margin-right: 16px;
+}
