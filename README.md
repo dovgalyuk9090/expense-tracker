@@ -1,5 +1,7 @@
 # **Expense Tracker Application**
 
+![img.png](img.png)
+
 ### **Description:**
 
 You need to create a web application for tracking personal finances. The user should be able to add expenses and incomes, view the overall balance, and filter records by categories.
